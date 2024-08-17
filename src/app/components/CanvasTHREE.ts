@@ -1,7 +1,7 @@
 import * as THREE from "three";
 
-// import vertexShader from "../shaders/sketch/vertex.glsl";
-// import fragmentShader from "../shaders/sketch/fragment.glsl";
+import vertexShader from "../shaders/sketch/vertex.glsl";
+import fragmentShader from "../shaders/sketch/fragment.glsl";
 
 export default class Canvas {
   canvas: HTMLCanvasElement;
@@ -51,7 +51,11 @@ export default class Canvas {
 
   addObjects() {
     const geometry = new THREE.PlaneGeometry(500, 500);
-    const material = new THREE.MeshBasicMaterial({ color: "#ac94f4" });
+    const material = new THREE.ShaderMaterial({
+      vertexShader: vertexShader,
+      fragmentShader: fragmentShader,
+      uniforms: { uColor: { value: new THREE.Color("#c0cfb2") } },
+    });
 
     const mesh = new THREE.Mesh(geometry, material);
 

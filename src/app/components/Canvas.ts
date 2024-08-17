@@ -3,9 +3,10 @@ import {
   Camera,
   Transform,
   OGLRenderingContext,
-  Box,
   Program,
   Mesh,
+  Color,
+  Plane,
 } from "ogl";
 
 import vertexShader from "@app/shaders/sketch/vertex.glsl";
@@ -21,6 +22,7 @@ export default class Canvas {
 
   time = 0.0;
   mesh!: Mesh;
+  program: Program | null = null;
 
   constructor(canvas: HTMLCanvasElement) {
     this.canvas = canvas;
@@ -62,14 +64,18 @@ export default class Canvas {
   }
 
   addObjects() {
-    const geometry = new Box(this.gl);
-    const program = new Program(this.gl, {
+    const geometry = new Plane(this.gl, { height: 500, width: 500 });
+    this.program = new Program(this.gl, {
       vertex: vertexShader,
       fragment: fragmentShader,
+      uniforms: {
+        uColor: { value: new Color("#c0cfb2") },
+      },
     });
 
-    this.mesh = new Mesh(this.gl, { geometry, program });
-    this.mesh.scale.set(300, 300, 300);
+    console.log(this.program);
+
+    this.mesh = new Mesh(this.gl, { geometry, program: this.program });
     this.mesh.setParent(this.scene);
   }
 
@@ -78,7 +84,7 @@ export default class Canvas {
     // t?: number
     this.time += 0.015;
 
-    this.mesh.rotation.y += 0.03 / 20;
+    // this.mesh.rotation.y += 0.03 / 20;
 
     this.renderer.render({ scene: this.scene, camera: this.camera });
     window.requestAnimationFrame(this.update.bind(this));

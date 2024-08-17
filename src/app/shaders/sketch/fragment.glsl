@@ -3,6 +3,7 @@ precision highp float;
 varying vec2 vUv;
 
 uniform vec2 uResolution;
+uniform vec3 uColor;
 
 vec2 coverUV(vec2 u, vec2 s, vec2 i) {
   vec2 ratio = vec2(
@@ -22,5 +23,5 @@ vec2 coverUV(vec2 u, vec2 s, vec2 i) {
 void main() {
   vec2 st = (gl_FragCoord.xy * 2.0 - uResolution.xy) / uResolution.y ;
 
-  gl_FragColor = vec4(1.0, 0.2, 0.5, 1.0);
+  gl_FragColor = vec4(uColor.rgb, 1.0);
 }
