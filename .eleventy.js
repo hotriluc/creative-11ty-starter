@@ -30,7 +30,6 @@ module.exports = function (eleventyConfig) {
   eleventyConfig.addPassthroughCopy("public");
   eleventyConfig.addPassthroughCopy("src/app");
   eleventyConfig.addPassthroughCopy("src/interfaces");
-  eleventyConfig.addPassthroughCopy("src/fonts");
   eleventyConfig.addPassthroughCopy("src/styles");
   eleventyConfig.setServerPassthroughCopyBehavior("copy");
 
