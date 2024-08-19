@@ -1,7 +1,7 @@
 import * as THREE from "three";
 
-import vertexShader from "../shaders/sketch/vertex.glsl";
-import fragmentShader from "../shaders/sketch/fragment.glsl";
+import vertexShader from "../shaders/sketchTHREE/vertex.glsl";
+import fragmentShader from "../shaders/sketchTHREE/fragment.glsl";
 
 export default class Canvas {
   canvas: HTMLCanvasElement;
