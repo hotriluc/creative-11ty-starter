@@ -1,0 +1,24 @@
+.navigation {
+  display: flex;
+  justify-content: space-between;
+  padding: 2rem;
+
+  &__list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+
+  &__item {
+  }
+
+  &__link {
+  }
+
+  .location {
+    display: flex;
+    flex-direction: column;
+    gap: 0.2rem;
+  }
+}
